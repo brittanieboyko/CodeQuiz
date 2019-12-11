@@ -3,18 +3,45 @@ $(document).ready(function() {
     var slideContainer = $(".slide-container");
     var quizContainer = $(".quiz-container");
     var scoreContainer = $(".score-container");
+    var highScoreList = $(".highscore-list");
     var score = 0;
     var currentSlide = 1;
     var highScores = [];
+
+
+    init();
+
+    function init() {
+        var storedScores = JSON.parse(localStorage.getItem("highScores"));
+
+        if (storedScores !== null) {
+            highScores = storedScores;
+        }
+        renderScores();
+        }
 
     function correctAnswer() {
         answerContainer.text("Correct!");
         score = score + 10;
     }
+
     function incorrectAnswer() {
         answerContainer.text("Wrong!");
         score = score - 10;
     }
+
+    function renderScores() {
+        highScoreList.text("");
+        highScores.forEach(function(score) {
+            var li = $("<li>");
+            li.text(score);
+            highScoreList.append(li);
+        });
+      }
+
+    function storeScores() {
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+      }
 
     function populateFinalScoreList() {
         var initials = $("#user-initials").val();
@@ -22,15 +49,16 @@ $(document).ready(function() {
         if (initials === "") {
             return;
           }
-
           highScores.push(initials + " " + score);
+
+          storeScores();
+          renderScores();
     }
     
     function showFinalScore() {
         quizContainer.hide();
         scoreContainer.show();
         $(".score").text("Your final score is " + score);
-
     }
       
     function showSlides(index) {
