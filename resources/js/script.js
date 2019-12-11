@@ -2,6 +2,7 @@ $(document).ready(function() {
     var answerContainer = $(".answer-container");
     var slideContainer = $(".slide-container");
     var quizContainer = $(".quiz-container");
+    var scoreContainer = $(".score-container");
     var score = 0;
     var currentSlide = 1;
 
@@ -17,6 +18,7 @@ $(document).ready(function() {
     function showFinalScore() {
         console.log("hooray");
         quizContainer.hide();
+        scoreContainer.show();
     }
       
     function showSlides(index) {
@@ -57,7 +59,7 @@ $(document).ready(function() {
                     } else {
                         incorrectAnswer()
                     }
-                    setTimeout(() => showNextSlide(1), 2000);
+                    setTimeout(() => showNextSlide(1), 1000);
                 });
 
             });
