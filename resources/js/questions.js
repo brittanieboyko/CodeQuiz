@@ -11,12 +11,12 @@ var questions = [
     },
     {
         title: "This is a third question.",
-        choices: ["anwer one", "answer two", "answer three", "answer four"],
+        choices: ["anwser one", "answer two", "answer three", "answer four"],
         answer: "answer one"
     },
     {
         title: "This is question number four",
-        choices: ["anwer one", "answer two", "answer three", "answer four"],
+        choices: ["answer one", "answer two", "answer three", "answer four"],
         answer: "answer one"
     },
   ];
