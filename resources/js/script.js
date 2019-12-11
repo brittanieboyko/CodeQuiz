@@ -44,12 +44,13 @@ $(document).ready(function() {
       }
 
     function populateFinalScoreList() {
-        var initials = $("#user-initials").val();
+        var initials = $("#user-initials")
 
         if (initials === "") {
             return;
           }
-          highScores.push(initials + " " + score);
+          highScores.push(initials.val() + " " + score);
+          initials.val("");
 
           storeScores();
           renderScores();
