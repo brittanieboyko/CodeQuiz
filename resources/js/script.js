@@ -47,7 +47,7 @@ $(document).ready(function() {
     function populateFinalScoreList() {
         var initials = $("#user-initials")
 
-        if (initials === "") {
+        if (initials.val() === "") {
             return;
           }
           highScores.push(initials.val() + " " + score);
@@ -134,4 +134,14 @@ $(document).ready(function() {
         window.location.href="high-scores.html";
     });
 
+    $("#go-back").on("click", function() {
+        window.location.href="index.html";
+    });
+
+    $("#clear").on("click", function() {
+        highScores.splice(0,highScores.length);
+        
+        storeScores();
+        renderScores();
+    });
 });
