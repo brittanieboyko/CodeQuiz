@@ -28,6 +28,7 @@ $(document).ready(function() {
 
     function showNextSlide(n) {
         showSlides(currentSlide = currentSlide + n);
+        answerContainer.text("");
     }
 
     function buildQuiz(){
@@ -49,8 +50,7 @@ $(document).ready(function() {
                     } else {
                         incorrectAnswer()
                     }
-                    showNextSlide(1);
-
+                    setTimeout(() => showNextSlide(1), 2000);
                 });
 
             });
