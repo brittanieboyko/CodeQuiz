@@ -3,10 +3,12 @@ $(document).ready(function() {
     var resultsContainer = $(".answer");
     var slide = $(".slide");
 
-    $("#start-button").on("click", function() {
-        $("#landing").hide();
-        buildQuiz();
-    });
+    function correctAnswer() {
+        console.log("bingo");
+    }
+    function incorrectAnswer() {
+        console.log("boo");
+    }
 
     function buildQuiz(){
         questions.forEach(function(currentQuestion) {
@@ -14,13 +16,23 @@ $(document).ready(function() {
             quizContainer.append(questionText);
 
             currentQuestion.choices.forEach(function(choice) {
-                var choiceButton = $("<button>").text(choice);
+                var choiceButton = $("<button>");
+                choiceButton.text(choice);
+                choiceButton.on("click", function() {
+                    if (choice === currentQuestion.answer) {
+                        correctAnswer()
+                    } else {
+                        incorrectAnswer()
+                    }
+                });
                 quizContainer.append(choiceButton);
             });
         });
-
-        var submitButton = $("<button>").text("Submit");
-        submitButton.addClass("submit");
-        slide.append(submitButton);
     };
+
+    $("#start-button").on("click", function() {
+        $("#landing").hide();
+        buildQuiz();
+    });
+
 });
