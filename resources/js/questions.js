@@ -19,6 +19,5 @@ var questions = [
         choices: ["anwer one", "answer two", "answer three", "answer four"],
         answer: "answer one"
     },
-    ///etc.
   ];
   
