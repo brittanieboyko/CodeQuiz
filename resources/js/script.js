@@ -5,6 +5,7 @@ $(document).ready(function() {
     var scoreContainer = $(".score-container");
     var score = 0;
     var currentSlide = 1;
+    var highScores = [];
 
     function correctAnswer() {
         answerContainer.text("Correct!");
@@ -14,17 +15,28 @@ $(document).ready(function() {
         answerContainer.text("Wrong!");
         score = score - 10;
     }
+
+    function populateFinalScoreList() {
+        var initials = $("#user-initials").val();
+
+        if (initials === "") {
+            return;
+          }
+
+          highScores.push(initials + " " + score);
+    }
     
     function showFinalScore() {
-        console.log("hooray");
         quizContainer.hide();
         scoreContainer.show();
+        $(".score").text("Your final score is " + score);
+
     }
       
     function showSlides(index) {
         var i;
         var slides = $(".slide");
-        //loop slides for now
+
         if (index > slides.length) {
             showFinalScore();
             return
@@ -73,7 +85,7 @@ $(document).ready(function() {
     });
 
     $(".submit-scores-button").on("click", function() {
-        console.log("submit");
+        populateFinalScoreList();
         window.location.href="high-scores.html";
     });
 
