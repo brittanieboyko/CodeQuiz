@@ -72,4 +72,9 @@ $(document).ready(function() {
         showSlides(currentSlide);
     });
 
+    $(".submit-scores-button").on("click", function() {
+        console.log("submit");
+        window.location.href="high-scores.html";
+    });
+
 });
