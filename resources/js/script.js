@@ -4,6 +4,7 @@ $(document).ready(function() {
     var quizContainer = $(".quiz-container");
     var scoreContainer = $(".score-container");
     var highScoreList = $(".highscore-list");
+    var countDownDisplay = $("#timer");
     var score = 0;
     var currentSlide = 1;
     var highScores = [];
@@ -107,10 +108,25 @@ $(document).ready(function() {
         });
     };
 
+    function startTimer(duration, display) {
+        var timer = duration;
+        setInterval(function () {
+            var seconds = parseInt(timer, 10);
+    
+            display.text("Time: " + seconds);
+            timer = timer - 1;
+            if (timer < 0) {
+                showFinalScore();
+                timer = 0;
+            }
+        }, 1000);
+    }
+
     $("#start-button").on("click", function() {
         $("#landing").hide();
         buildQuiz();
         showSlides(currentSlide);
+        startTimer(60, countDownDisplay);
     });
 
     $(".submit-scores-button").on("click", function() {
