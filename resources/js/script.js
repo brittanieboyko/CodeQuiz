@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var answerContainer = $(".answer-container");
     var slideContainer = $(".slide-container");
+    var quizContainer = $(".quiz-container");
     var score = 0;
     var currentSlide = 1;
 
@@ -12,13 +13,19 @@ $(document).ready(function() {
         answerContainer.text("Wrong!");
         score = score - 10;
     }
+    
+    function showFinalScore() {
+        console.log("hooray");
+        quizContainer.hide();
+    }
       
     function showSlides(index) {
         var i;
         var slides = $(".slide");
         //loop slides for now
         if (index > slides.length) {
-            currentSlide = 1
+            showFinalScore();
+            return
         }
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
