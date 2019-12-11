@@ -1,3 +1,7 @@
 #submit {
     border: 1px solid;
 }
+
+.slide {
+  display: none;
+}

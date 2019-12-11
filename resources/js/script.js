@@ -2,7 +2,7 @@ $(document).ready(function() {
     var answerContainer = $(".answer-container");
     var slideContainer = $(".slide-container");
     var score = 0;
-    var currentSlide = 0;
+    var currentSlide = 1;
 
     function correctAnswer() {
         answerContainer.text("Correct!");
@@ -11,6 +11,23 @@ $(document).ready(function() {
     function incorrectAnswer() {
         answerContainer.text("Wrong!");
         score = score - 10;
+    }
+      
+    function showSlides(index) {
+        var i;
+        var slides = $(".slide");
+        //loop slides for now
+        if (index > slides.length) {
+            currentSlide = 1
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[currentSlide-1].style.display = "block";
+    }
+
+    function showNextSlide(n) {
+        showSlides(currentSlide = currentSlide + n);
     }
 
     function buildQuiz(){
@@ -32,6 +49,8 @@ $(document).ready(function() {
                     } else {
                         incorrectAnswer()
                     }
+                    showNextSlide(1);
+
                 });
 
             });
@@ -41,6 +60,7 @@ $(document).ready(function() {
     $("#start-button").on("click", function() {
         $("#landing").hide();
         buildQuiz();
+        showSlides(currentSlide);
     });
 
 });
