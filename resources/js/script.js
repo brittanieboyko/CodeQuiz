@@ -8,6 +8,7 @@ $(document).ready(function() {
     var score = 0;
     var currentSlide = 1;
     var highScores = [];
+    var timer = 60;
 
 
     init();
@@ -28,7 +29,9 @@ $(document).ready(function() {
 
     function incorrectAnswer() {
         answerContainer.text("Wrong!");
+        timer = timer - 10;
         score = score - 10;
+
     }
 
     function renderScores() {
@@ -109,10 +112,9 @@ $(document).ready(function() {
     };
 
     function startTimer(duration, display) {
-        var timer = duration;
+        timer = duration;
         setInterval(function () {
             var seconds = parseInt(timer, 10);
-    
             display.text("Time: " + seconds);
             timer = timer - 1;
             if (timer < 0) {
@@ -126,7 +128,7 @@ $(document).ready(function() {
         $("#landing").hide();
         buildQuiz();
         showSlides(currentSlide);
-        startTimer(60, countDownDisplay);
+        startTimer(timer, countDownDisplay);
     });
 
     $(".submit-scores-button").on("click", function() {
