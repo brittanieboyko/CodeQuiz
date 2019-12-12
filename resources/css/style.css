@@ -23,3 +23,18 @@ button {
 .score-container {
   display: none;
 }
+
+.high-scores-container {
+  margin: 2%;
+}
+.highscore-list {
+  margin: 2%;
+}
+#go-back, #clear, #start-button {
+  background-color: #011A27;
+  border-color: #011A27;
+}
+#go-back, #clear {
+  width: 50%;
+  margin: 2px 0;
+}

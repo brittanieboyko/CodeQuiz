@@ -101,6 +101,7 @@ $(document).ready(function() {
                 slideContainer.append(slide);
 
                 choiceButton.on("click", function() {
+                    event.preventDefault();
                     if (choice === currentQuestion.answer) {
                         correctAnswer()
                     } else {
@@ -127,6 +128,7 @@ $(document).ready(function() {
     }
 
     $("#start-button").on("click", function() {
+        event.preventDefault();
         $("#landing").hide();
         buildQuiz();
         showSlides(currentSlide);
@@ -134,14 +136,17 @@ $(document).ready(function() {
     });
 
     $(".submit-scores-button").on("click", function() {
+        event.preventDefault();
         populateHighScoreList();
     });
 
     $("#go-back").on("click", function() {
+        event.preventDefault();
         window.location.href="index.html";
     });
 
     $("#clear").on("click", function() {
+        event.preventDefault();
         highScores.splice(0,highScores.length);
         
         storeScores();
