@@ -2,9 +2,18 @@ body {
   color: #011A27;
   font-family: 'Quicksand', sans-serif;
 }
+.container {
+  background-color: #C4DFE6;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  margin-top: 5%;
+  padding: 5%;    
+}
 
-#submit {
-  border: 1px solid;
+button {
+  display:flex;
+  justify-content:space-around;
+  width: 100%;
 }
 
 .slide {
