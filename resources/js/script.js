@@ -5,6 +5,7 @@ $(document).ready(function() {
     var scoreContainer = $(".score-container");
     var highScoreList = $(".highscore-list");
     var countDownDisplay = $("#timer");
+    
     var score = 0;
     var currentSlide = 1;
     var highScores = [];
@@ -61,6 +62,7 @@ $(document).ready(function() {
     }
     
     function showFinalScore() {
+        timer = 0;
         quizContainer.hide();
         scoreContainer.show();
         $(".score").text("Your final score is " + score);
@@ -118,8 +120,8 @@ $(document).ready(function() {
             display.text("Time: " + seconds);
             timer = timer - 1;
             if (timer < 0) {
-                showFinalScore();
                 timer = 0;
+                showFinalScore();
             }
         }, 1000);
     }
