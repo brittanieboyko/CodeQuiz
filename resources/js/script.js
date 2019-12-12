@@ -5,12 +5,11 @@ $(document).ready(function() {
     var scoreContainer = $(".score-container");
     var highScoreList = $(".highscore-list");
     var countDownDisplay = $("#timer");
-    
-    var score = 0;
+
     var currentSlide = 1;
     var highScores = [];
     var timer = 60;
-
+    var score = 0;
 
     init();
 
@@ -21,7 +20,7 @@ $(document).ready(function() {
             highScores = storedScores;
         }
         renderScores();
-        }
+    }
 
     function correctAnswer() {
         answerContainer.text("Correct!");
@@ -29,10 +28,9 @@ $(document).ready(function() {
     }
 
     function incorrectAnswer() {
-        answerContainer.text("Wrong!");
+        answerContainer.text("Nope!");
         timer = timer - 10;
         score = score - 10;
-
     }
 
     function renderScores() {
@@ -42,13 +40,13 @@ $(document).ready(function() {
             li.text(score);
             highScoreList.append(li);
         });
-      }
+    }
 
     function storeScores() {
         localStorage.setItem("highScores", JSON.stringify(highScores));
-      }
+    }
 
-    function populateFinalScoreList() {
+    function populateHighScoreList() {
         var initials = $("#user-initials")
 
         if (initials.val() === "") {
@@ -59,13 +57,15 @@ $(document).ready(function() {
 
           storeScores();
           renderScores();
+          window.location.href="high-scores.html";
     }
     
-    function showFinalScore() {
+    function showFinalScore() {        
+        $(".score").text("Your final score is " + score);
+
         timer = 0;
         quizContainer.hide();
         scoreContainer.show();
-        $(".score").text("Your final score is " + score);
     }
       
     function showSlides(index) {
@@ -134,8 +134,7 @@ $(document).ready(function() {
     });
 
     $(".submit-scores-button").on("click", function() {
-        populateFinalScoreList();
-        window.location.href="high-scores.html";
+        populateHighScoreList();
     });
 
     $("#go-back").on("click", function() {
